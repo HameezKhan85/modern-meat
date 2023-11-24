@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Modern Meat</title>
+
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        .navbar-collapse a:hover,
+        footer a:hover {
+            border-bottom: 2px solid green;
+        }
+        .btn-success {
+            position: relative;
+            background-repeat: no-repeat;
+            color: #fff;
+            border: none;
+            transition: all .3s ease-in-out;
+            z-index: 1;
+        }
+
+        .btn-success::before {
+            content: "";
+            background-color: rgb(7, 149, 55);
+            width: 0;
+            height: 100%;
+            border-radius: 6px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: width 500ms ease-in-out;
+            display: inline-block;
+        }
+
+        .btn-success:hover::before {
+            width: 100%;
+        }
+
+        .banner-img {
+            width: 85%;
+            height: 25vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(images/protein-menu-veal-meat-vegetables-fruits.jpg);
+            background-size: cover;
+            background-position: 85%;
+        }
+
+        .col-img-1,
+        .col-img-2,
+        .col-img-3,
+        .col-img-4,
+        .col-img-5,
+        .col-img-6 {
+            height: 25vh;
+            background-size: cover;
+            background-position: 50%;
+            transition: .25s;
+        }
+
+        .col-img-1 h5,
+        .col-img-2 h5,
+        .col-img-3 h5,
+        .col-img-4 h5,
+        .col-img-5 h5,
+        .col-img-6 h5 {
+            display: none;
+        }
+
+        .col-img-1:hover h5,
+        .col-img-2:hover h5,
+        .col-img-3:hover h5,
+        .col-img-4:hover h5,
+        .col-img-5:hover h5,
+        .col-img-6:hover h5 {
+            display: block;
+        }
+
+        .col-img-1 {
+            background-image: url(images/hyderabadi-chicken-biryani-dum-biriyani.jpg);
+        }
+
+        .col-img-1:hover {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(images/hyderabadi-chicken-biryani-dum-biriyani.jpg);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+
+        .col-img-2 {
+            background-image: url(images/sliced-steak-bone-with-grilled-vegetables-spices-tbone-steak.jpg);
+        }
+
+        .col-img-2:hover {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(images/sliced-steak-bone-with-grilled-vegetables-spices-tbone-steak.jpg);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+
+        .col-img-3 {
+            background-image: url(images/lamb-chops-with-pistachios-roasted-basil-vegetables.jpg);
+        }
+
+        .col-img-3:hover {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(images/lamb-chops-with-pistachios-roasted-basil-vegetables.jpg);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+
+        .col-img-4 {
+            background-image: url(images/thinly-sliced-flank-steak-weak-roasting-with-chimichurri.jpg);
+        }
+
+        .col-img-4:hover {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(images/thinly-sliced-flank-steak-weak-roasting-with-chimichurri.jpg);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+
+        .col-img-5 {
+            background-image: url(images/grilled-chicken-wings-black-castiron-pan-with-assorted-sauce.jpg);
+        }
+
+        .col-img-5:hover {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(images/grilled-chicken-wings-black-castiron-pan-with-assorted-sauce.jpg);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+
+        .col-img-6 {
+            background-image: url(images/grilled-meat-chicken-cutlets-dark-rectangular-plate-table-with-spices.jpg);
+        }
+
+        .col-img-6:hover {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(images/grilled-meat-chicken-cutlets-dark-rectangular-plate-table-with-spices.jpg);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+
+        img {
+            transition: .25s;
+        }
+
+        .col-6 img:hover {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    
+    <!-- PRE NAV -->
+    <div class="border-bottom">
+        <div class="container-fluid d-none d-lg-flex justify-content-between py-2"
+            style="width: 85%;">
+            <div class="d-flex align-items-center justify-content-center mb-2 mb-lg-0">
+                <a class="me-2" href="#">
+                    <i class="fa-solid fa-headphones"></i>
+                </a>
+                <div>
+                    <span class="text-secondary me-2">CALL US</span>
+                    <span class="fw-bold">+92 5452 1135</span>
+                </div>
+            </div>
+            <div>
+                <span class="text-secondary">ORDERS ABOVE $300 WILL BE SHIPPED FREE OF COST.</span>
+            </div>
+            <div class="d-none d-lg-flex">
+                <a class="me-3 text-primary" href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a class="me-3 text-info" href="#">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a class="me-3 text-secondary" href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a class="text-danger" href="#">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- /.PRE NAV -->
+
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-expand-lg border-bottom">
+        <div class="container-fluid" style="width: 85%;">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand fs-3" href="#">
+                <img src="images/logo.webp" alt="logo" width="80px">
+            </a>
+
+            <div class="collapse navbar-collapse py-2" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
+                    <li class="nav-item me-0 me-xl-3">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item me-0 me-xl-3 dropdown">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Beef</a></li>
+                            <li><a class="dropdown-item" href="#">Mutton</a></li>
+                            <li><a class="dropdown-item" href="#">Chicken</a></li>
+                            <li><a class="dropdown-item" href="#">Seafod</a></li>
+                            <li><a class="dropdown-item" href="#">Camel</a></li>
+                            <li><a class="dropdown-item" href="#">Goat</a></li>
+                            <li><a class="dropdown-item" href="#">Cow</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Request</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item me-0 me-xl-3 dropdown">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Deals
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Fan Favorites</a></li>
+                            <li><a class="dropdown-item" href="#">Premium Beef</a></li>
+                            <li><a class="dropdown-item" href="#">Redy-to-cook meat</a></li>
+                            <li><a class="dropdown-item" href="#">Premium Seafood</a></li>
+                            <li><a class="dropdown-item" href="#">Bundles</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Browse all items</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item me-0 me-xl-3">
+                        <a class="nav-link" href="#">Recipes</a>
+                    </li>
+                    <li class="nav-item me-0 me-xl-3">
+                        <a class="nav-link" href="#">Reviews</a>
+                    </li>
+                    <li class="nav-item me-0 me-xl-3">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item me-0 me-xl-3">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-none d-lg-block cart-info">
+                <button class="btn btn-success"><i class="fa-solid fa-cart-shopping me-2"></i>CART<span
+                        class="ms-2">$0.00</span></buton>
+            </div>
+            <div class="d-block d-lg-none cart-info">
+                <i class="fa-solid fa-cart-shopping fs-4 text-success me-1"></i>
+                <span>$0.00</span>
+            </div>
+        </div>
+    </nav>
+    <!-- /NAVIGATION -->
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container-fluid" style="width: 85%;">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6 col-xl-7 mb-lg-0 py-5 py-md-5">
+                    <div class="mb-3 mb-md-5 lh-1">
+                        <div editable="rich">
+                            <h1 class="rfs-30 text-success">FRESH & HEALTHY FOOD <br> FOR YOU.</h1>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="btn btn-success" href="#" role="button">Shop Now</a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-5">
+                    <div class="px-md-4 px-lg-5">
+                        <div editable="rich">
+                            <h5 class="text-success">Why Modern Meat?</h5>
+                            <p class="">Get the highest quality meats for your family.
+                                <br>Support meat farms and small butcher shops near you.
+                                <br>Help transform the meat supply chain.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 g-0">
+                    <div>
+                        <img class="img-fluid w-100 rounded-5"
+                            src="images/healthy-diet-balanced-nutrition-ingredients.jpg"
+                            alt="healthy-diet-balanced-nutrition-ingredients"
+                            style="object-fit: cover; max-height:35vh;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.HERO -->
+
+    <!-- FEATURES -->
+    <section class="features py-0 py-lg-3 my-lg-5">
+        <div class="container-fluid" style="width: 85%;">
+            <div class="row d-none d-lg-flex">
+                <div class="col d-lg-flex align-items-center justify-content-center border-success border-end">
+                        <i class="fa-solid fa-rocket fs-3 text-success me-3"></i>
+                    <div class="d-flex flex-column">
+                        <span class="fw-bold">FREE DELIVERY</span>
+                        <span class="text-secondary">For all oders over $300</span>
+                    </div>
+                </div>
+                <div class="col d-lg-flex align-items-center justify-content-center border-success border-end">
+                        <i class="fa-solid fa-clock-rotate-left fs-3 text-success me-3"></i>
+                    <div class="d-flex flex-column">
+                        <span class="fw-bold">RETURN</span>
+                        <span class="text-secondary">If goods have problems</span>
+                    </div>
+                </div>
+                <div class="col d-lg-flex align-items-center justify-content-center border-success border-end">
+                        <i class="fa-regular fa-credit-card fs-3 text-success me-3"></i>
+                    <div class="d-flex flex-column">
+                        <span class="fw-bold">SECURE PAYMENT</span>
+                        <span class="text-secondary">100% secure payment</span>
+                    </div>
+                </div>
+                <div class="col d-lg-flex align-items-center justify-content-center">
+                        <i class="fa-regular fa-comments fs-3 text-success me-3"></i>
+                    <div class="d-flex flex-column">
+                        <span class="fw-bold">24/7 SUPPORT</span>
+                        <span class="text-secondary">Dedicated support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.FEATURES -->
+
+    <!-- GALLERY -->
+    <div class="container-fluid py-5 my-5" style="width: 85%;">
+        <div class="row mb-4">
+            <div class="text-center mb-0 mb-lg-2">
+                <h4 class="fw-bold display-6">Explore By Category</h4>
+            </div>
+            <div class="text-center">
+                <p class="lead m-auto px-0 px-md-3 px-lg-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat
+                    aspernatur, odit accusamus beatae laborum ullam nisi.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3 col-xl-2 g-4 position-relative text-light">
+                <img class="img-fluid rounded-3"
+                    src="images/assortment-healthy-protein-source-body-building-foods-meat-chicken-fillet-broccoli-beans-cheese-eggs.jpg"
+                    sizes="(max-width: 1080px) 100vw, 1080px" width="1080" height="768"
+                    alt="assortment-healthy-protein-source-body-building-foods-meat-chicken-fillet-broccoli-beans-cheese-eggs"
+                    loading="lazy">
+            </div>
+            <div class="col-6 col-md-3 col-xl-2 g-4">
+                <img class="img-fluid rounded-3" src="images/raw-beef-meat-kebabs-sausages.jpg"
+                    sizes="(max-width: 1080px) 100vw, 1080px" width="1080" height="768"
+                    alt="raw-beef-meat-kebabs-sausages" loading="lazy">
+            </div>
+            <div class="col-6 col-md-3 col-xl-2 g-4">
+                <img class="img-fluid rounded-3" src="images/raw-chicken-liver.jpg"
+                    sizes="(max-width: 1080px) 100vw, 1080px" width="1080" height="768" alt="raw-chicken-liver"
+                    loading="lazy">
+            </div>
+            <div class="col-6 col-md-3 col-xl-2 g-4">
+                <img class="img-fluid rounded-3" src="images/raw-marble-beef-brisket-meat-with-herb.jpg"
+                    sizes="(max-width: 1080px) 100vw, 1080px" width="1080" height="768"
+                    alt="raw-marble-beef-brisket-meat-with-herb" loading="lazy">
+            </div>
+            <div class="col-6 col-md-3 col-xl-2 g-4">
+                <img class="img-fluid rounded-3" src="images/raw-meat-sliced.jpg"
+                    sizes="(max-width: 1080px) 100vw, 1080px" width="1080" height="768" alt="raw-meat-sliced"
+                    loading="lazy">
+            </div>
+            <div class="col-6 col-md-3 col-xl-2 g-4">
+                <img class="img-fluid rounded-3" src="images/crab-claws-boiled-claw-claws.jpg"
+                    sizes="(max-width: 1080px) 100vw, 1080px" width="1080" height="768"
+                    alt="crab-claws-boiled-claw-claws" loading="lazy">
+            </div>
+            <div class="col-6 col-md-3 col-xl-2 g-4">
+                <img class="img-fluid rounded-3" src="images/raw-minced-homemade-farmers-grill-beef-burgers.jpg"
+                    sizes="(max-width: 1080px) 100vw, 1080px" width="1080" height="768"
+                    alt="raw-minced-homemade-farmers-grill-beef-burgers" loading="lazy">
+            </div>
+            <div class="col-6 col-md-3 col-xl-2 g-4">
+                <img class="img-fluid rounded-3" src="images/raw-tuna-fillet-seafood.jpg"
+                    sizes="(max-width: 1080px) 100vw, 1080px" width="1080" height="768" alt="raw-tuna-fillet-seafood"
+                    loading="lazy">
+            </div>
+            <div class="col-6 col-md-3 col-xl-2 g-4">
+                <img class="img-fluid rounded-3" src="images/raw-veal-ossobuko-steak-with-bone-meat.jpg"
+                    sizes="(max-width: 1080px) 100vw, 1080px" width="1080" height="768"
+                    alt="raw-veal-ossobuko-steak-with-bone-meat" loading="lazy">
+            </div>
+            <div class="col-6 col-md-3 col-xl-2 g-4">
+                <img class="img-fluid rounded-3" src="images/sausage-with-tomatoes-blue-meat-food-burger.jpg"
+                    sizes="(max-width: 1080px) 100vw, 1080px" width="1080" height="768"
+                    alt="sausage-with-tomatoes-blue-meat-food-burger" loading="lazy">
+            </div>
+            <div class="col-6 col-md-3 col-xl-2 g-4">
+                <img class="img-fluid rounded-3" src="images/sea-fish-seabass-seafood.jpg"
+                    sizes="(max-width: 1080px) 100vw, 1080px" width="1080" height="768" alt="sea-fish-seabass-seafood"
+                    loading="lazy">
+            </div>
+            <div class="col-6 col-md-3 col-xl-2 g-4">
+                <img class="img-fluid rounded-3" src="images/fresh-chicken-with-tomatoes.jpg"
+                    sizes="(max-width: 1080px) 100vw, 1080px" width="1080" height="768"
+                    alt="fresh-chicken-with-tomatoes" loading="lazy">
+            </div>
+        </div>
+    </div>
+    <!-- /.GALLERY -->
+
+    <!-- BANNER -->
+    <section class="banner my-5">
+        <div class="container-fluid banner-img rounded-4">
+            <div class="text-light d-flex flex-column align-items-start justify-content-center h-100 ms-md-5">
+                <h6>ON YOUR FIRSR ORDER OVER <b>$500</b></h6>
+                <h2 class="display-5">10% DISCOUNT</h2>
+                <h6>USE CODE: <b>FIRSTMM</b></h6>
+            </div>
+        </div>
+    </section>
+    <!-- /.BANNER -->
+
+    <!-- CARDS -->
+    <div class="container-fluid my-4 p-3" style="width: 85%;">
+        <div class="row mb-5">
+            <div class="text-center mb-0 mb-lg-2">
+                <h6 href="#" class="text-success">Fresh Meat Everyday!</h6>
+                <h4 class="fw-bold display-6">Latest Offers</h4>
+            </div>
+            <div class="text-center">
+                <p class="lead m-auto px-0 px-md-3 px-lg-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat
+                    aspernatur, odit accusamus beatae laborum ullam nisi.</p>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-4">
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <a href="#">
+                        <img src="images/raw-chicken-liver.jpg" class="card-img-top" alt="raw-chicken-liver" />
+                    </a>
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                            <span class="float-start fs-6">Chicken</span>
+                            <span class="float-end badge text-dark rounded-pill border border-success fs-6">$75</span>
+                        </div>
+                        <h5 class="card-title">
+                            <a target="_blank" href="#">Fresh Chicken Liver <small>(500g)</small></a>
+                        </h5>
+                        <div class="d-grid my-4">
+                            <a href="#" class="btn btn-success bold-btn">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <a href="#">
+                        <img src="images/raw-beef-meat-kebabs-sausages.jpg" class="card-img-top"
+                            alt="raw-beef-meat-kebabs-sausages" />
+                    </a>
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                            <span class="float-start fs-6">Mutton</span>
+                            <span class="float-end badge text-dark rounded-pill border border-success fs-6">$150</span>
+                        </div>
+                        <h5 class="card-title">
+                            <a target="_blank" href="#">Beef Meat Kabab Pack <small>(1kg)</small></a>
+                        </h5>
+                        <div class="d-grid my-4">
+                            <a href="#" class="btn btn-success bold-btn">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <a href="#">
+                        <img src="images/raw-marble-beef-brisket-meat-with-herb.jpg" class="card-img-top"
+                            alt="raw-marble-beef-brisket-meat-with-herb" />
+                    </a>
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                            <span class="float-start fs-6">Beef</span>
+                            <span class="float-end badge text-dark rounded-pill border border-success fs-6">$200</span>
+                        </div>
+                        <h5 class="card-title">
+                            <a target="_blank" href="#">Beef Brisket Meat <small>(2kg)</small></a>
+                        </h5>
+                        <div class="d-grid my-4">
+                            <a href="#" class="btn btn-success bold-btn">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-none d-lg-block d-xl-none">
+                <div class="card h-100 shadow-sm">
+                    <a href="#">
+                        <img src="images/raw-tuna-fillet-seafood.jpg" class="card-img-top"
+                            alt="raw-tuna-fillet-seafood" />
+                    </a>
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                            <span class="float-start fs-6">Fish</span>
+                            <span class="float-end badge text-dark rounded-pill border border-success fs-6">$180</span>
+                        </div>
+                        <h5 class="card-title">
+                            <a target="_blank" href="#">Fresh Tuna Fillet <small>(2kg)</small></a>
+                        </h5>
+                        <div class="d-grid my-4">
+                            <a href="#" class="btn btn-success bold-btn">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-none d-lg-block d-xl-none">
+                <div class="card h-100 shadow-sm">
+                    <a href="#">
+                        <img src="images/raw-veal-ossobuko-steak-with-bone-meat.jpg" class="card-img-top"
+                            alt="raw-veal-ossobuko-steak-with-bone-meat" />
+                    </a>
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                            <span class="float-start fs-6">Lamb</span>
+                            <span class="float-end badge text-dark rounded-pill border border-success fs-6">$160</span>
+                        </div>
+                        <h5 class="card-title">
+                            <a target="_blank" href="#">Lamb Ossubuko Steak With Bone Meat <small>(1kg)</small></a>
+                        </h5>
+                        <div class="d-grid my-4">
+                            <a href="#" class="btn btn-success bold-btn">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-none d-sm-block">
+                <div class="card h-100 shadow-sm">
+                    <a href="#">
+                        <img src="images/crab-claws-boiled-claw-claws.jpg" class="card-img-top"
+                            alt="raw-marble-beef-brisket-meat-with-herb" />
+                    </a>
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                            <span class="float-start fs-6">Seafood</span>
+                            <span class="float-end badge text-dark rounded-pill border border-success fs-6">$110</span>
+                        </div>
+                        <h5 class="card-title">
+                            <a target="_blank" href="#">King Cocktail Claw Crab <small>(700g)</small></a>
+                        </h5>
+                        <div class="d-grid my-4">
+                            <a href="#" class="btn btn-success bold-btn">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-none d-md-block">
+                <div class="card h-100 shadow-sm">
+                    <a href="#">
+                        <img src="images/raw-meat-sliced.jpg" class="card-img-top" alt="raw-meat-sliced" />
+                    </a>
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                            <span class="float-start fs-6">Bison</span>
+                            <span class="float-end badge text-dark rounded-pill border border-success fs-6">$300</span>
+                        </div>
+                        <h5 class="card-title">
+                            <a target="_blank" href="#">Boneless American Bison Meat <small>(5kg)</small></a>
+                        </h5>
+                        <div class="d-grid my-4">
+                            <a href="#" class="btn btn-success bold-btn">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-none d-md-block">
+                <div class="card h-100 shadow-sm">
+                    <a href="#">
+                        <img src="images/sea-fish-seabass-seafood.jpg" class="card-img-top"
+                            alt="sea-fish-seabass-seafood" />
+                    </a>
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                            <span class="float-start fs-6">Fish</span>
+                            <span class="float-end badge text-dark rounded-pill border border-success fs-6">$230</span>
+                        </div>
+                        <h5 class="card-title">
+                            <a target="_blank" href="#">Frozen Sea Bass Fish <small>(3kg)</small></a>
+                        </h5>
+                        <div class="d-grid my-4">
+                            <a href="#" class="btn btn-success bold-btn">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.CARDS -->
+
+    <!-- RECIPES -->
+    <section class="achievements my-5 overflow-x-hidden">
+        <div class="container-fluid" style="width: 85%;">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 text-light">
+                <div class="col">
+                    <div class="col-img-1 text-center d-flex align-items-end justify-content-center rounded-5">
+                        <h5 class="fs-3 pb-3">CHICKEN BIRYANI</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-img-2 text-center d-flex align-items-end justify-content-center rounded-5">
+                        <h5 class="fs-3 pb-3">MUTTON STEAK</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-img-3 text-center d-flex align-items-end justify-content-center rounded-5">
+                        <h5 class="fs-3 pb-3">LAMB CHOPS</h5>
+                    </div>
+                </div>
+                <div class="col d-none d-sm-block">
+                    <div class="col-img-4 text-center d-flex align-items-end justify-content-center rounded-5">
+                        <h5 class="fs-3 pb-3">BEEF FLANK STEAK</h5>
+                    </div>
+                </div>
+                <div class="col d-none d-sm-block">
+                    <div class="col-img-5 text-center d-flex align-items-end justify-content-center rounded-5">
+                        <h5 class="fs-3 pb-3">HOT WINGS</h5>
+                    </div>
+                </div>
+                <div class="col d-none d-sm-block">
+                    <div class="col-img-6 text-center d-flex align-items-end justify-content-center rounded-5">
+                        <h5 class="fs-3 pb-3">CHAPLI KABAB</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.RECIPES -->
+
+    <!-- SUBSCRIBE -->
+    <section class="subscribe">
+        <div class="container-fluid mx-auto py-4" style="width: 85%;">
+            <div class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3">
+                <div class="col">
+                    <div class="d-block d-md-flex text-center justify-content-around align-items-center">
+                        <div class="text-center">
+                            <h4 class="text-success">Save $25 On Your Next Order</h4>
+                            <p class="fs-6">Offers, New Products, Recipes & More</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col d-flex justify-content-center align-items-center">
+                    <div class="input text-center d-lg-flex justify-content-center align-items-center">
+                        <input type="email" class="form-control pe-5 me-3 fs-6" placeholder="email@emailaddress.com"
+                            required>
+                        <button class="btn btn-success fs-6 mt-3 mt-lg-0">SUBSCRIBE</button>
+                    </div>
+                </div>
+                <div class="col col-lg-12 d-flex justify-content-center align-items-center mt-4 mt-lg-3 mt-xxl-0">
+                    <a class="me-4 text-primary" href="#">
+                        <i class="fa-brands fa-facebook-f fs-4"></i>
+                    </a>
+                    <a class="me-4 text-info" href="#">
+                        <i class="fa-brands fa-twitter fs-4"></i>
+                    </a>
+                    <a class="me-4 text-secondary" href="#">
+                        <i class="fa-brands fa-instagram fs-4"></i>
+                    </a>
+                    <a class="text-danger" href="#">
+                        <i class="fa-brands fa-youtube fs-4"></i>
+                    </a>
+                </div>
+            </div>
+    </section>
+    <!-- /.SUBSCRIBE -->
+
+    <!-- FOOTER -->
+    <footer class="footer border-top">
+        <div class="container-fluid" style="width: 85%">
+            <div class="row row-cols-2 row-cols-lg-4 gy-4 py-5">
+                <div class="col">
+                    <a href="#" class="border-0">
+                        <img src="images/logo.webp" alt="logo" width="120px">
+                    </a>
+                </div>
+                <div class="col">
+                    <div class="mb-4">
+                        <h4 class="text-success">SHOP</h4>
+                    </div>
+                    <style>
+                        .footer-links-list ul {
+                            padding-left: 0
+                        }
+
+                        .footer-links-list ul li {
+                            margin-bottom: 15px;
+                            list-style-type: none;
+                            padding-left: 0
+                        }
+
+                        .footer-links-list a {
+                            text-decoration: none;
+                        }
+                    </style>
+                    <div class="footer-links-list">
+                        <ul>
+                            <li><a href="#">Beef</a></li>
+                            <li><a href="#">Mutton</a></li>
+                            <li><a href="#">Seafood</a></li>
+                            <li><a href="#">Chicken</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-4">
+                        <h4 class="text-success">COMPANY</h4>
+                    </div>
+                    <div class="footer-links-list">
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Work with us</a></li>
+                            <li><a href="#">Privacy Center</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-4">
+                        <h4 class="text-success">SUPPORT</h4>
+                    </div>
+                    <div class="footer-links-list">
+                        <ul>
+                            <li><a href="#">Contact Us</a> </li>
+                            <li><a href="#">Shipping & FAQs</a></li>
+                            <li><a href="#">Corporate Orders</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /.FOOTER -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
